@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h1>Список парков города</h1>
+<section>
+    <table border="1"  id = "Parks">
+        <tr>
+            <th >Id</th>
+            <th>Город</th>
+            <th>Площадь</th>
+            <th>Водоемы</th>
+            <th>Тип</th>
+            <th>Название</th>
+            <th>Дата</th>
+        </tr>
+            <tr th:each="park: ${parks}">
+            <td th:text="${park.id}"></td>
+            <td th:text="${park.cityid}"></td>
+            <td th:text="${park.pl}"></td>
+            <td th:text="${park.water}"></td>
+            <td th:text="${park.parktype}"></td>
+            <td th:text="${park.parkname}"></td>
+            <td th:text="${park.parkdate}"></td>
+            <td>
+                <a th:href="@{/parkedit/{id}(id = ${park.id})}">Редактировать</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{/deletepark/{id}(id = ${park.id})}">Удалить</a>
+
+            </td>
+        </tr>
+    </table>
+</section>
+<form action="#" th:action="@{/adminpark/{id}(id = ${park.getCityid()})}" th:object="${park}"
+      method="post">
+
+    <table border="0" cellpadding="10">
+
+         <tr>
+            <td>Город:</td>
+            <td><input type="number" th:field="*{cityid}" />
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('cityid')}"
+                      th:errors="*{cityid}">Name Error</span> </td>
+        </tr>
+        <tr>
+            <td>Площадь:</td>
+            <td><input type="number" th:field="*{pl}"/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('pl')}"
+                      th:errors="*{pl}">Name Error</span> </td>
+        </tr>
+        <tr>
+            <td>Водоем:</td>
+            <td><input type="text" th:field="*{water}"/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('water')}"
+                      th:errors="*{water}">Name Error</span></td>
+        </tr>
+        <tr>
+            <td>Тип:</td>
+            <td><input type="text" th:field="*{parktype}"/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('parktype')}"
+                      th:errors="*{parktype}">Name Error</span></td>
+        </tr>
+        <tr>
+            <td>Название:</td>
+            <td><input type="text" th:field="*{parkname}"/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('parkname')}"
+                      th:errors="*{parkname}">Name Error</span></td>
+        </tr>
+        <tr>
+            <td>Дата постройки:</td>
+            <td><input type="date" th:field="*{parkdate}"/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('parkdate')}"
+                      th:errors="*{parkdate}">Name Error</span></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><button type="submit">Сохранить</button> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

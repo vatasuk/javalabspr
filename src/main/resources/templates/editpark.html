@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<form action="#" th:action="@{/updatepark}" th:object="${park}"
+      method="post">
+
+    <table border="0" cellpadding="10">
+        <tr>
+            <td>ID:</td>
+            <td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+        </tr>
+        <tr>
+            <td>Город:</td>
+            <td><input type="number" th:field="*{cityid}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td>Площадь:</td>
+            <td><input type="number" th:field="*{pl}"/></td>
+        </tr>
+        <tr>
+            <td>Водоем:</td>
+            <td><input type="text" th:field="*{water}"/>
+                </td>
+        </tr>
+        <tr>
+            <td>Тип:</td>
+            <td><input type="text" th:field="*{parktype}"/>
+                </td>
+        </tr>
+        <tr>
+            <td>Название:</td>
+            <td><input type="text" th:field="*{parkname}"/>
+                </td>
+        </tr>
+        <tr>
+            <td>Дата постройки:</td>
+            <td><input type="date" th:field="*{parkdate}"/>
+                </td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><button type="submit">Сохранить</button> </td>
+        </tr>
+    </table>
+</form>
+<body>
+
+</body>
+</html>

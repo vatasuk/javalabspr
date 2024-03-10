@@ -6,5 +6,28 @@
 </head>
 <body>
 <h1>Список парков города</h1>
+<section>
+    <table border="1"  id = "Parks">
+        <tr>
+            <th style="visibility:hidden">Id</th>
+            <th>Город</th>
+            <th>Площадь</th>
+            <th>Водоемы</th>
+            <th>Тип</th>
+            <th>Название</th>
+            <th>Дата</th>
+        </tr>
+        <tr th:each="park: ${parks}">
+            <td style="visibility:hidden" th:text="${park.id}"></td>
+            <td th:text="${park.cityid}"></td>
+            <td th:text="${park.pl}"></td>
+            <td th:text="${park.water}"></td>
+            <td th:text="${park.parktype}"></td>
+            <td th:text="${park.parkname}"></td>
+            <td th:text="${park.parkdate}"></td>
+        </tr>
+    </table>
+
+</section>
 </body>
 </html>

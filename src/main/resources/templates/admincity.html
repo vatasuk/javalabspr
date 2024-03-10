@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<section>
+    <table border="1"  id = "Races">
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Население</th>
+
+        </tr>
+        <tr th:each="city: ${cities}">
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.cityname}"></td>
+            <td th:text="${city.pop}"></td>
+            <td>
+                <a th:href="@{/adminpark/{id}(id = ${city.id})}">Показать парки</a>
+                <a th:href="@{/cityedit/{id}(id = ${city.id})}">Редактировать</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{/deletecity/{id}(id = ${city.id})}">Удалить</a>
+
+            </td>
+        </tr>
+    </table>
+    <form action="#" th:action="@{/admincity}" th:object="${city}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+
+            <tr>
+                <td>Название:</td>
+                <td><input type="text" th:field="*{cityname}"/>
+                    <span class="validationError"
+                          th:if="${#fields.hasErrors('cityname')}"
+                          th:errors="*{cityname}">Name Error</span> </td>
+            </tr>
+            <tr>
+                <td>Население:</td>
+                <td><input type="text" th:field="*{pop}"/>
+                    <span class="validationError"
+                          th:if="${#fields.hasErrors('pop')}"
+                          th:errors="*{pop}">Name Error</span></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Сохранить</button> </td>
+            </tr>
+        </table>
+    </form>
+</section>
+</html>
